@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const app = express();
+const path = require('path');
 
 // Middleware
 app.use(express.json());
@@ -19,7 +20,7 @@ app.use('/admin', require('./routes/admin'));
 
 // Home route
 app.get('/', (req, res) => {
-  res.send('CTF Hub is running!');
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(3000, () => {
